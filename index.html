@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Arbeidskrav 1</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module">
       import { resources } from "./ressurser.js"
@@ -14,14 +14,16 @@
 
         // Lag tabs ved hjelp av map()
         function createTabs() {
+            // Henter alle kategorier fra resources og fjerner duplikater ved hjelp av Set
           const uniqueCategories = [
             ...new Set(resources.map((res) => res.category)),
-          ] // Trekker ut unike kategorier
+          ] 
 
           uniqueCategories.map((category, index) => {
             const tab = document.createElement("button")
             tab.classList.add("tab")
             tab.textContent = category
+            // Lag et data-attributt for hver tab for enklere identifisering ved klikk
             tab.dataset.tab = category.toLowerCase().replace(/\s+/g, "-")
 
             if (index === 0) tab.classList.add("active") // Standard tab/fane
@@ -32,7 +34,8 @@
 
         // Lag innhold basert på valgt kategori ved hjelp av filter()
         function createContent(selectedCategory) {
-          contentContainer.innerHTML = "" // Slett tidligere innhold
+            // Tømmer tidligere innhold før nytt innhold lastes inn
+          contentContainer.innerHTML = "" 
 
           const filteredResources = resources.filter(
             (resource) => resource.category === selectedCategory
@@ -41,7 +44,7 @@
           filteredResources.map((resource) => {
             const article = document.createElement("article")
             article.classList.add("active") // Vis aktivt innhold
-
+            // Oppretter en artikkel med overskrift, beskrivelse og lenkeliste
             const heading = document.createElement("h2")
             heading.textContent = resource.category
 
@@ -74,8 +77,8 @@
 
           tabs.forEach((tab) => {
             tab.addEventListener("click", () => {
+                // Fjern aktiv klasse fra alle faner før vi legger til den nye aktive fanen
               tabs.forEach((t) => t.classList.remove("active")) 
-              // Fjern aktivt klasse fra alle faner
               tab.classList.add("active") // Angi klikket fane som aktiv
 
               const selectedCategory = tab.textContent // Få kategorinavn
@@ -97,3 +100,4 @@
       </main> 
 </body>
 </html>
+
