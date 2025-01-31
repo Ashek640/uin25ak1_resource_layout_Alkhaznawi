@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module">
-      import { resources } from "./reusurses.js"
+      import { resources } from "./ressurser.js"
 
       document.addEventListener("DOMContentLoaded", () => {
         const tabsContainer = document.querySelector("nav")
@@ -79,8 +79,7 @@
               tab.classList.add("active") // Angi klikket fane som aktiv
 
               const selectedCategory = tab.textContent // Få kategorinavn
-              createContent(selectedCategory) 
-              // Oppdater innhold
+              createContent(selectedCategory) // Oppdater innhold basert på ny fane
             })
           })
         }
@@ -92,6 +91,9 @@
     </script>
 </head>
 <body>
-    
+    <main>
+        <nav></nav>
+        <section></section>
+      </main> 
 </body>
 </html>
